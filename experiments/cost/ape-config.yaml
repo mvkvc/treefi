@@ -1,0 +1,8 @@
+name: cost
+
+plugins:
+  - name: vyper
+  - name: arbitrum
+
+vyper:
+  version: 0.3.7
