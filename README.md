@@ -1,11 +1,11 @@
 # treefi
 
-Off-chain yield-generating accounts and payments.
+Off-chain yield-generating payment accounts.
 
 ## Links
 
-- https://treefi.xyz
 - https://explore.treefi.xyz
+- https://treefi.xyz
 - https://withdraw.treefi.xyz
 
 ## Components

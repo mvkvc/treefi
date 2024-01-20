@@ -2,49 +2,56 @@ import { useState, useEffect } from 'react';
 
 // Needs work
 
-const endpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:4000/api/check' : 'https://treefi.xyz/api/check';
+const url_check: string = process.env.NODE_ENV === 'development' ? 'http://localhost:4001/api/check' : 'https://treefi.xyz/api/check';
+const url_redirect: string = process.env.NODE_ENV === 'development' ? 'http://localhost:4000/app' : 'https://treefi.xyz/app';
 
-const useNetworkStatusPolling = (_endpoint) => {
+const useNetworkStatus= (endpoint: string) => {
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetch(endpoint)
-        .then(response => {
-          if (response.ok) {
-            setIsConnected(true);
-          } else {
-            setIsConnected(false);
-          }
-        })
-        .catch(() => setIsConnected(false));
-    }, 1000);
+      .then(response => {
+        if (response.ok) {
+          setIsConnected(true);
+        } else {
+          setIsConnected(false);
+        }
+      })
+      .catch(() => setIsConnected(false));
+    }, 1_500);
 
-    // Clean up interval on component unmount
     return () => clearInterval(intervalId);
-  }, [_endpoint]);
+  }, [isConnected, endpoint]);
 
   return isConnected;
 };
 
-
 function App() {
-  const isNetworkConnected = useNetworkStatusPolling(endpoint);
-  const [message, setMessage] = useState("");
+  const isNetworkConnected = useNetworkStatus(url_check);
 
   useEffect(() => {
     if (isNetworkConnected) {
-      setMessage("Redirecting...");
-      // window.location.replace("/app");
-    } else {
-      setMessage("No connection...");
+      window.location.href = url_redirect;
     }
   }, [isNetworkConnected]);
 
   return (
+    // PWA requirements
+    // <head>
+    //   <meta name="viewport" content="width=device-width,initial-scale=1">
+    //   <title>My Awesome App</title>
+    //   <meta name="description" content="My Awesome App description">
+    //   <link rel="icon" href="/favicon.ico">
+    //   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+    //   <link rel="mask-icon" href="/mask-icon.svg" color="#FFFFFF">
+    //   <meta name="theme-color" content="#ffffff">
+    // </head>
     <section>
-      <h1>useNetworkState</h1>
-      <p>{message}</p>
+      <h1 className="text-3xl font-bold underline">
+        TreeFi
+      </h1>
+      <p>{isNetworkConnected ? "Redirecting..." : "No connection..."}</p>
       <div>
         {isNetworkConnected ? (
           <p>You are online!</p>

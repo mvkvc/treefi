@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import './App.css';
+import './index.css'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import Component from './components/index';
