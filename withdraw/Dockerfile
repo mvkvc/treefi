@@ -16,7 +16,6 @@ ENV NODE_ENV="production"
 ARG PNPM_VERSION=8.13.1
 RUN npm install -g pnpm@$PNPM_VERSION
 
-
 # Throw-away build stage to reduce size of final image
 FROM base as build
 
@@ -32,18 +31,19 @@ RUN pnpm install --frozen-lockfile --prod=false
 COPY --link . .
 
 # Build application
-RUN pnpm run build
+RUN pnpm run build:site
 
 # Remove development dependencies
 RUN pnpm prune --prod
 
-
 # Final stage for app image
 FROM base
+
+RUN npm i -g serve
 
 # Copy built application
 COPY --from=build /app /app
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD [ "node", "index.js" ]
+CMD [ "serve" ]

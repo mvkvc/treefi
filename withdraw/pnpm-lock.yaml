@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@noir-lang/acvm_js':
+    specifier: ^0.38.0
+    version: 0.38.0
   '@noir-lang/backend_barretenberg':
     specifier: ^0.19.4
     version: 0.19.4
@@ -14,6 +17,9 @@ dependencies:
   '@noir-lang/noir_wasm':
     specifier: ^0.19.4
     version: 0.19.4(@noir-lang/source-resolver@0.19.4)
+  '@noir-lang/noirc_abi':
+    specifier: ^0.22.0
+    version: 0.22.0
   '@noir-lang/source-resolver':
     specifier: ^0.19.4
     version: 0.19.4
@@ -879,6 +885,10 @@ packages:
     resolution: {integrity: sha512-LiQUSF3P4/1VGfMZc0hSivLs4oiPsRt+ADFBMF7sOg4oaImeQ4L6tu0Og2Wh1Pc0k2y1EXdv1EKxN2N1WRDdKg==}
     dev: false
 
+  /@noir-lang/acvm_js@0.38.0:
+    resolution: {integrity: sha512-bf5RcE7KmcjZ86j9Esm/KoHQhW3EEIv/qvKFy15jfgqPjTrXsUC7s9vif7/ZXpJKUMxu55zluNTTJtIGoNwy+A==}
+    dev: false
+
   /@noir-lang/backend_barretenberg@0.19.4:
     resolution: {integrity: sha512-gk8uyx3qJAXp7hNgzBpAyyoK5BV/8zoB+kQqVStuue6D9ByMTxvqL3juJ0Ivm+NYN/IqBIIkuFNTgiaD/2gHsA==}
     dependencies:
@@ -907,6 +917,10 @@ packages:
 
   /@noir-lang/noirc_abi@0.19.4:
     resolution: {integrity: sha512-g3fa3rVGyvnqu1BQdXytCPzIFQDvK1kH9uMjNrEz5UG/LKl+EPvIl1Te8FcOsSi5/eVSbMWveyz3HJu+SwMjDQ==}
+    dev: false
+
+  /@noir-lang/noirc_abi@0.22.0:
+    resolution: {integrity: sha512-Rxt0qX6IexMeDiytDAg5z2AvlUe3MOOmeUCi9d1ovqF/Cj9ZUZc+LVOdkR5r11bgAMApURFXZo3idvz3v/MO0g==}
     dev: false
 
   /@noir-lang/source-resolver@0.19.4:

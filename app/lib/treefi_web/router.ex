@@ -27,6 +27,8 @@ defmodule TreeFiWeb.Router do
 
   scope "/api", TreeFiWeb do
     pipe_through :api
+
+    get "/check", CheckController, :check
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

@@ -23,7 +23,7 @@ echo "Installing vault/ dependencies..."
 (cd ./vault && poetry install)
 
 echo "Installing site/ dependencies..."
-(cd ./site && pnpm i --frozen-lockfile)
+(cd ./site && pnpm i)
 
 echo "Installing withdraw/ dependencies..."
-(cd ./withdraw && pnpm i --frozen-lockfile)
+(cd ./withdraw && pnpm i)

@@ -1,57 +1,58 @@
-import { useEffect } from "react";
-import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from 'react';
 
-const style = { display: "flex", gap: "8px", padding: "8px" };
+// Needs work
+
+const endpoint = process.env.NODE_ENV === 'development' ? 'http://localhost:4000/api/check' : 'https://treefi.xyz/api/check';
+
+const useNetworkStatusPolling = (_endpoint) => {
+  const [isConnected, setIsConnected] = useState(false);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      fetch(endpoint)
+        .then(response => {
+          if (response.ok) {
+            setIsConnected(true);
+          } else {
+            setIsConnected(false);
+          }
+        })
+        .catch(() => setIsConnected(false));
+    }, 1000);
+
+    // Clean up interval on component unmount
+    return () => clearInterval(intervalId);
+  }, [_endpoint]);
+
+  return isConnected;
+};
+
 
 function App() {
-  /**
-   * During development we can still access the base path at `/`
-   * And this hook will make sure that we land on the base `/app`
-   * path which will mount our App as usual.
-   * In production, Phoenix makes sure that the `/app` route is
-   * always mounted within the first request.
-   * */
+  const isNetworkConnected = useNetworkStatusPolling(endpoint);
+  const [message, setMessage] = useState("");
+
   useEffect(() => {
-    if (window.location.pathname === "/") {
-      window.location.replace("/webapp");
+    if (isNetworkConnected) {
+      setMessage("Redirecting...");
+      // window.location.replace("/app");
+    } else {
+      setMessage("No connection...");
     }
-  }, []);
+  }, [isNetworkConnected]);
 
   return (
-    <BrowserRouter basename="webapp">
-      <nav style={style}>
-        <Link to="/">Home</Link>
-        <Link to="/settings">Settings Page</Link>
-        <br />
-      </nav>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="settings" element={<SettingsPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-function SettingsPage() {
-  return (
-    <div>
-      <h1>Settings Page</h1>
-      <ul>
-        <li>My profile</li>
-        <li>Music</li>
-        <li>About</li>
-      </ul>
-    </div>
-  );
-}
-
-function HomePage() {
-  const style = { padding: "8px" };
-  return (
-    <div style={style}>
-      <h1>React TS Home</h1>
-      <p>Welcome to the homepage</p>
-    </div>
+    <section>
+      <h1>useNetworkState</h1>
+      <p>{message}</p>
+      <div>
+        {isNetworkConnected ? (
+          <p>You are online!</p>
+        ) : (
+          <p>You are offline. Please check your network connection.</p>
+        )}
+      </div>
+    </section>
   );
 }
 

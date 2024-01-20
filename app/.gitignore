@@ -1,4 +1,9 @@
 priv/static/pwa
+priv/static/favicon-*
+priv/static/robots-*
+priv/static/robots.txt.gz
+priv/static/images/logo-*
+priv/static/images/logo.svg.gz
 .db
 
 # The directory Mix will write compiled artifacts to.
