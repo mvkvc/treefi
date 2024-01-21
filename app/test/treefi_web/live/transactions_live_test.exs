@@ -72,7 +72,10 @@ defmodule TreeFiWeb.TransactionsLiveTest do
     test "deletes transactions in listing", %{conn: conn, transactions: transactions} do
       {:ok, index_live, _html} = live(conn, ~p"/transaction")
 
-      assert index_live |> element("#transaction-#{transactions.id} a", "Delete") |> render_click()
+      assert index_live
+             |> element("#transaction-#{transactions.id} a", "Delete")
+             |> render_click()
+
       refute has_element?(index_live, "#transaction-#{transactions.id}")
     end
   end

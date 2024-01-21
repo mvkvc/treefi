@@ -18,6 +18,10 @@ module.exports = {
       }
     },
   },
+  daisyui: {
+    themes: [],
+    logs: false
+  },
   plugins: [
     require("daisyui"),
     // require("@tailwindcss/forms"),

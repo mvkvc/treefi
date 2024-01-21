@@ -6,7 +6,7 @@ defmodule TreeFi.Payments do
   import Ecto.Query, warn: false
   alias TreeFi.Repo
 
-  alias TreeFi.Payments.Accounts
+  alias TreeFi.Payments.Account
 
   @doc """
   Returns the list of account.
@@ -14,28 +14,28 @@ defmodule TreeFi.Payments do
   ## Examples
 
       iex> list_account()
-      [%Accounts{}, ...]
+      [%Account{}, ...]
 
   """
   def list_account do
-    Repo.all(Accounts)
+    Repo.all(Account)
   end
 
   @doc """
   Gets a single accounts.
 
-  Raises `Ecto.NoResultsError` if the Accounts does not exist.
+  Raises `Ecto.NoResultsError` if the Account does not exist.
 
   ## Examples
 
       iex> get_accounts!(123)
-      %Accounts{}
+      %Account{}
 
       iex> get_accounts!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_accounts!(id), do: Repo.get!(Accounts, id)
+  def get_accounts!(id), do: Repo.get!(Account, id)
 
   @doc """
   Creates a accounts.
@@ -43,15 +43,15 @@ defmodule TreeFi.Payments do
   ## Examples
 
       iex> create_accounts(%{field: value})
-      {:ok, %Accounts{}}
+      {:ok, %Account{}}
 
       iex> create_accounts(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
   def create_accounts(attrs \\ %{}) do
-    %Accounts{}
-    |> Accounts.changeset(attrs)
+    %Account{}
+    |> Account.changeset(attrs)
     |> Repo.insert()
   end
 
@@ -61,15 +61,15 @@ defmodule TreeFi.Payments do
   ## Examples
 
       iex> update_accounts(accounts, %{field: new_value})
-      {:ok, %Accounts{}}
+      {:ok, %Account{}}
 
       iex> update_accounts(accounts, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_accounts(%Accounts{} = accounts, attrs) do
+  def update_accounts(%Account{} = accounts, attrs) do
     accounts
-    |> Accounts.changeset(attrs)
+    |> Account.changeset(attrs)
     |> Repo.update()
   end
 
@@ -79,13 +79,13 @@ defmodule TreeFi.Payments do
   ## Examples
 
       iex> delete_accounts(accounts)
-      {:ok, %Accounts{}}
+      {:ok, %Account{}}
 
       iex> delete_accounts(accounts)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_accounts(%Accounts{} = accounts) do
+  def delete_accounts(%Account{} = accounts) do
     Repo.delete(accounts)
   end
 
@@ -95,14 +95,14 @@ defmodule TreeFi.Payments do
   ## Examples
 
       iex> change_accounts(accounts)
-      %Ecto.Changeset{data: %Accounts{}}
+      %Ecto.Changeset{data: %Account{}}
 
   """
-  def change_accounts(%Accounts{} = accounts, attrs \\ %{}) do
-    Accounts.changeset(accounts, attrs)
+  def change_accounts(%Account{} = accounts, attrs \\ %{}) do
+    Account.changeset(accounts, attrs)
   end
 
-  alias TreeFi.Payments.Transactions
+  alias TreeFi.Payments.Transaction
 
   @doc """
   Returns the list of transaction.
@@ -110,28 +110,28 @@ defmodule TreeFi.Payments do
   ## Examples
 
       iex> list_transaction()
-      [%Transactions{}, ...]
+      [%Transaction{}, ...]
 
   """
   def list_transaction do
-    Repo.all(Transactions)
+    Repo.all(Transaction)
   end
 
   @doc """
   Gets a single transactions.
 
-  Raises `Ecto.NoResultsError` if the Transactions does not exist.
+  Raises `Ecto.NoResultsError` if the Transaction does not exist.
 
   ## Examples
 
       iex> get_transactions!(123)
-      %Transactions{}
+      %Transaction{}
 
       iex> get_transactions!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_transactions!(id), do: Repo.get!(Transactions, id)
+  def get_transactions!(id), do: Repo.get!(Transaction, id)
 
   @doc """
   Creates a transactions.
@@ -139,15 +139,15 @@ defmodule TreeFi.Payments do
   ## Examples
 
       iex> create_transactions(%{field: value})
-      {:ok, %Transactions{}}
+      {:ok, %Transaction{}}
 
       iex> create_transactions(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
   def create_transactions(attrs \\ %{}) do
-    %Transactions{}
-    |> Transactions.changeset(attrs)
+    %Transaction{}
+    |> Transaction.changeset(attrs)
     |> Repo.insert()
   end
 
@@ -157,15 +157,15 @@ defmodule TreeFi.Payments do
   ## Examples
 
       iex> update_transactions(transactions, %{field: new_value})
-      {:ok, %Transactions{}}
+      {:ok, %Transaction{}}
 
       iex> update_transactions(transactions, %{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_transactions(%Transactions{} = transactions, attrs) do
+  def update_transactions(%Transaction{} = transactions, attrs) do
     transactions
-    |> Transactions.changeset(attrs)
+    |> Transaction.changeset(attrs)
     |> Repo.update()
   end
 
@@ -175,13 +175,13 @@ defmodule TreeFi.Payments do
   ## Examples
 
       iex> delete_transactions(transactions)
-      {:ok, %Transactions{}}
+      {:ok, %Transaction{}}
 
       iex> delete_transactions(transactions)
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_transactions(%Transactions{} = transactions) do
+  def delete_transactions(%Transaction{} = transactions) do
     Repo.delete(transactions)
   end
 
@@ -191,10 +191,10 @@ defmodule TreeFi.Payments do
   ## Examples
 
       iex> change_transactions(transactions)
-      %Ecto.Changeset{data: %Transactions{}}
+      %Ecto.Changeset{data: %Transaction{}}
 
   """
-  def change_transactions(%Transactions{} = transactions, attrs \\ %{}) do
-    Transactions.changeset(transactions, attrs)
+  def change_transactions(%Transaction{} = transactions, attrs \\ %{}) do
+    Transaction.changeset(transactions, attrs)
   end
 end

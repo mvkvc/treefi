@@ -1,4 +1,4 @@
-defmodule TreeFi.Payments.Accounts do
+defmodule TreeFi.Payments.Account do
   use Ecto.Schema
   import Ecto.Changeset
 

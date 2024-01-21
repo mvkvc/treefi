@@ -17,7 +17,8 @@ defmodule TreeFi.Application do
       # Start a worker by calling: TreeFi.Worker.start_link(arg)
       # {TreeFi.Worker, arg},
       # Start to serve requests, typically the last entry
-      TreeFiWeb.Endpoint
+      TreeFiWeb.Endpoint,
+      TreeFi.Prices
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

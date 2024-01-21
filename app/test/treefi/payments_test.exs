@@ -90,14 +90,19 @@ defmodule TreeFi.PaymentsTest do
       transactions = transactions_fixture()
       update_attrs = %{denomination: "some updated denomination", amount: 43}
 
-      assert {:ok, %Transactions{} = transactions} = Payments.update_transactions(transactions, update_attrs)
+      assert {:ok, %Transactions{} = transactions} =
+               Payments.update_transactions(transactions, update_attrs)
+
       assert transactions.denomination == "some updated denomination"
       assert transactions.amount == 43
     end
 
     test "update_transactions/2 with invalid data returns error changeset" do
       transactions = transactions_fixture()
-      assert {:error, %Ecto.Changeset{}} = Payments.update_transactions(transactions, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               Payments.update_transactions(transactions, @invalid_attrs)
+
       assert transactions == Payments.get_transactions!(transactions.id)
     end
 

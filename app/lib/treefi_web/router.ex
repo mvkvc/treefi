@@ -51,12 +51,6 @@ defmodule TreeFiWeb.Router do
     end
   end
 
-  scope "/", TreeFiWeb do
-    pipe_through :browser
-
-    forward "/", Plugs.RootRedirector
-  end
-
   ## Authentication routes
 
   scope "/", TreeFiWeb do
@@ -93,5 +87,11 @@ defmodule TreeFiWeb.Router do
       live "/users/confirm/:token", UserConfirmationLive, :edit
       live "/users/confirm", UserConfirmationInstructionsLive, :new
     end
+  end
+
+  scope "/", TreeFiWeb do
+    pipe_through :browser
+
+    forward "/", Plugs.RootRedirector
   end
 end

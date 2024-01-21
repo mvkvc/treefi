@@ -1,7 +1,7 @@
 defmodule TreeFiWeb.CheckController do
-    use TreeFiWeb, :controller
+  use TreeFiWeb, :controller
 
-    def check(conn, _params) do
-      json(conn, %{health: "check"})
-    end
+  def check(conn, _params) do
+    json(conn, %{health: "check"})
+  end
 end

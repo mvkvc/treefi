@@ -30,7 +30,12 @@
   </:action>
 </.table>
 
-<.modal :if={@live_action in [:new, :edit]} id="transactions-modal" show on_cancel={JS.patch(~p"/transaction")}>
+<.modal
+  :if={@live_action in [:new, :edit]}
+  id="transactions-modal"
+  show
+  on_cancel={JS.patch(~p"/transaction")}
+>
   <.live_component
     module={TreeFiWeb.TransactionsLive.FormComponent}
     id={@transactions.id || :new}

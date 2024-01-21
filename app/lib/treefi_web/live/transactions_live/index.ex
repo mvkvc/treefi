@@ -2,7 +2,7 @@ defmodule TreeFiWeb.TransactionsLive.Index do
   use TreeFiWeb, :live_view
 
   alias TreeFi.Payments
-  alias TreeFi.Payments.Transactions
+  alias TreeFi.Payments.Transaction
 
   @impl true
   def mount(_params, _session, socket) do
@@ -23,7 +23,7 @@ defmodule TreeFiWeb.TransactionsLive.Index do
   defp apply_action(socket, :new, _params) do
     socket
     |> assign(:page_title, "New Transactions")
-    |> assign(:transactions, %Transactions{})
+    |> assign(:transactions, %Transaction{})
   end
 
   defp apply_action(socket, :index, _params) do

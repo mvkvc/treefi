@@ -25,8 +25,9 @@ defmodule TreeFi.MixProject do
 
   defp deps do
     [
-      {:bcrypt_elixir, "~> 3.0"},
       {:portboy, git: "https://github.com/mvkvc/portboy.git"},
+      {:req, "~> 0.4.8"},
+      {:bcrypt_elixir, "~> 3.0"},
       {:phoenix, "~> 1.7.10"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.10"},

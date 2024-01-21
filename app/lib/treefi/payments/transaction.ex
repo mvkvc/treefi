@@ -1,8 +1,8 @@
-defmodule TreeFi.Payments.Transactions do
+defmodule TreeFi.Payments.Transaction do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "transaction" do
+  schema "transactions" do
     field :denomination, :string
     field :amount, :integer
     field :user_id, :id

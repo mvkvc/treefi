@@ -15,7 +15,12 @@
 
 <.back navigate={~p"/transaction"}>Back to transaction</.back>
 
-<.modal :if={@live_action == :edit} id="transactions-modal" show on_cancel={JS.patch(~p"/transaction/#{@transactions}")}>
+<.modal
+  :if={@live_action == :edit}
+  id="transactions-modal"
+  show
+  on_cancel={JS.patch(~p"/transaction/#{@transactions}")}
+>
   <.live_component
     module={TreeFiWeb.TransactionsLive.FormComponent}
     id={@transactions.id}
