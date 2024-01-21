@@ -1,4 +1,4 @@
-defmodule SiteWeb.Telemetry do
+defmodule TreefiWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -52,23 +52,23 @@ defmodule SiteWeb.Telemetry do
       ),
 
       # Database Metrics
-      summary("site.repo.query.total_time",
+      summary("treefi.repo.query.total_time",
         unit: {:native, :millisecond},
         description: "The sum of the other measurements"
       ),
-      summary("site.repo.query.decode_time",
+      summary("treefi.repo.query.decode_time",
         unit: {:native, :millisecond},
         description: "The time spent decoding the data received from the database"
       ),
-      summary("site.repo.query.query_time",
+      summary("treefi.repo.query.query_time",
         unit: {:native, :millisecond},
         description: "The time spent executing the query"
       ),
-      summary("site.repo.query.queue_time",
+      summary("treefi.repo.query.queue_time",
         unit: {:native, :millisecond},
         description: "The time spent waiting for a database connection"
       ),
-      summary("site.repo.query.idle_time",
+      summary("treefi.repo.query.idle_time",
         unit: {:native, :millisecond},
         description:
           "The time the connection spent waiting before being checked out for the query"
@@ -86,7 +86,7 @@ defmodule SiteWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {SiteWeb, :count_users, []}
+      # {TreefiWeb, :count_users, []}
     ]
   end
 end

@@ -1,5 +1,5 @@
-defmodule SiteWeb.PageControllerTest do
-  use SiteWeb.ConnCase
+defmodule TreefiWeb.PageControllerTest do
+  use TreefiWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, ~p"/")

@@ -1,5 +1,5 @@
-defmodule Site.Repo do
+defmodule Treefi.Repo do
   use Ecto.Repo,
-    otp_app: :site,
+    otp_app: :treefi,
     adapter: Ecto.Adapters.SQLite3
 end

@@ -1,12 +1,12 @@
-defmodule SiteWeb do
+defmodule TreefiWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, components, channels, and so on.
 
   This can be used in your application as:
 
-      use SiteWeb, :controller
-      use SiteWeb, :html
+      use TreefiWeb, :controller
+      use TreefiWeb, :html
 
   The definitions below will be executed for every controller,
   component, etc, so keep them short and clean, focused
@@ -40,10 +40,10 @@ defmodule SiteWeb do
     quote do
       use Phoenix.Controller,
         formats: [:html, :json],
-        layouts: [html: SiteWeb.Layouts]
+        layouts: [html: TreefiWeb.Layouts]
 
       import Plug.Conn
-      import SiteWeb.Gettext
+      import TreefiWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -52,7 +52,7 @@ defmodule SiteWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {SiteWeb.Layouts, :app}
+        layout: {TreefiWeb.Layouts, :app}
 
       unquote(html_helpers())
     end
@@ -84,8 +84,8 @@ defmodule SiteWeb do
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components and translation
-      import SiteWeb.CoreComponents
-      import SiteWeb.Gettext
+      import TreefiWeb.CoreComponents
+      import TreefiWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
@@ -98,9 +98,9 @@ defmodule SiteWeb do
   def verified_routes do
     quote do
       use Phoenix.VerifiedRoutes,
-        endpoint: SiteWeb.Endpoint,
-        router: SiteWeb.Router,
-        statics: SiteWeb.static_paths()
+        endpoint: TreefiWeb.Endpoint,
+        router: TreefiWeb.Router,
+        statics: TreefiWeb.static_paths()
     end
   end
 

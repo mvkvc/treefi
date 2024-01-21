@@ -1,6 +1,6 @@
-defmodule Site do
+defmodule Treefi do
   @moduledoc """
-  Site keeps the contexts that define your domain
+  Treefi keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless
