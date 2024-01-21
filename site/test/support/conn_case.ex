@@ -1,4 +1,4 @@
-defmodule TreefiWeb.ConnCase do
+defmodule SiteWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule TreefiWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use TreefiWeb.ConnCase, async: true`, although
+  by setting `use SiteWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -20,19 +20,19 @@ defmodule TreefiWeb.ConnCase do
   using do
     quote do
       # The default endpoint for testing
-      @endpoint TreefiWeb.Endpoint
+      @endpoint SiteWeb.Endpoint
 
-      use TreefiWeb, :verified_routes
+      use SiteWeb, :verified_routes
 
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import TreefiWeb.ConnCase
+      import SiteWeb.ConnCase
     end
   end
 
   setup tags do
-    Treefi.DataCase.setup_sandbox(tags)
+    Site.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

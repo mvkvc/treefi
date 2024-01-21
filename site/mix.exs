@@ -1,11 +1,11 @@
-defmodule Treefi.MixProject do
+defmodule Site.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :treefi,
+      app: :site,
       version: "0.1.0",
-      elixir: "~> 1.15",
+      elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -18,7 +18,7 @@ defmodule Treefi.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Treefi.Application, []},
+      mod: {Site.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -32,7 +32,6 @@ defmodule Treefi.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:beacon, github: "beaconCMS/beacon"},
       {:phoenix, "~> 1.7.10"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.10"},
@@ -64,7 +63,7 @@ defmodule Treefi.MixProject do
   defp aliases do
     [
       setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
-      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs", "run priv/repo/beacon_seeds.exs"],
+      "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],

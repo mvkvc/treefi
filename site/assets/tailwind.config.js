@@ -8,8 +8,8 @@ const path = require("path")
 module.exports = {
   content: [
     "./js/**/*.js",
-    "../lib/treefi_web.ex",
-    "../lib/treefi_web/**/*.*ex"
+    "../lib/site_web.ex",
+    "../lib/site_web/**/*.*ex"
   ],
   theme: {
     extend: {
@@ -18,8 +18,13 @@ module.exports = {
       }
     },
   },
+  daisyui: {
+    themes: [],
+    logs: false
+  },
   plugins: [
-    require("@tailwindcss/forms"),
+    require("daisyui"),
+    // require("@tailwindcss/forms"),
     // Allows prefixing tailwind classes with LiveView classes to add rules
     // only when LiveView classes are applied, for example:
     //

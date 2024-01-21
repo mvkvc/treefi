@@ -7,17 +7,20 @@
 # General application configuration
 import Config
 
-config :treefi,
-  ecto_repos: [Treefi.Repo, Beacon.Repo],
+config :site,
+  ecto_repos: [Site.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configures the endpoint
-config :treefi, TreefiWeb.Endpoint,
+config :site, SiteWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
-  render_errors: [formats: [html: BeaconWeb.ErrorHTML]],
-  pubsub_server: Treefi.PubSub,
-  live_view: [signing_salt: "j6snno3O"]
+  render_errors: [
+    formats: [html: SiteWeb.ErrorHTML, json: SiteWeb.ErrorJSON],
+    layout: false
+  ],
+  pubsub_server: Site.PubSub,
+  live_view: [signing_salt: "tHbOCHbz"]
 
 # Configures the mailer
 #
@@ -26,7 +29,7 @@ config :treefi, TreefiWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :treefi, Treefi.Mailer, adapter: Swoosh.Adapters.Local
+config :site, Site.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,
