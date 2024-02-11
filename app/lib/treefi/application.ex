@@ -18,7 +18,8 @@ defmodule TreeFi.Application do
       # {TreeFi.Worker, arg},
       # Start to serve requests, typically the last entry
       TreeFiWeb.Endpoint,
-      TreeFi.Prices
+      TreeFi.Prices,
+      Portboy.child_pool(:merkle, {System.find_executable("node"), [Path.join(:code.priv_dir(:treefi), "/portboy/merkle_noir/out/main.js")]}, 5, 2)
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

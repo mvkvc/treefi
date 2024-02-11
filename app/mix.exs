@@ -5,7 +5,7 @@ defmodule TreeFi.MixProject do
     [
       app: :treefi,
       version: "0.1.0",
-      elixir: "~> 1.14",
+      elixir: "~> 1.15",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -25,8 +25,10 @@ defmodule TreeFi.MixProject do
 
   defp deps do
     [
-      {:portboy, git: "https://github.com/mvkvc/portboy.git"},
+      # {:portboy, ">= 0.0.0"},
+      {:portboy, path: "../../../os/portboy"},
       {:req, "~> 0.4.8"},
+      {:oban, "~> 2.16"},
       {:bcrypt_elixir, "~> 3.0"},
       {:phoenix, "~> 1.7.10"},
       {:phoenix_ecto, "~> 4.4"},

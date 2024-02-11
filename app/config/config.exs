@@ -7,6 +7,11 @@
 # General application configuration
 import Config
 
+config :treefi, Oban,
+  repo: TreeFi.Repo,
+  plugins: [Oban.Plugins.Pruner],
+  queues: [default: 10]
+
 config :treefi,
   namespace: TreeFi,
   ecto_repos: [TreeFi.Repo],
